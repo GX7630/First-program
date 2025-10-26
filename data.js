@@ -43,6 +43,7 @@ let softwareInfo = {
     "fileSize": "121831726471246716478468746817TB",
     "updateDate": "2025-10-27",
     "downloadUrl": "https://example.com/ArchiveQuerySystem.exe",
-    "description": "A rubbish software"
+    "description": "A rubbish software并且链接还没放"
 };
+
 
