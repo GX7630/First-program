@@ -3,21 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>档案查询系统</title>
+    <title id="page-title">档案查询系统</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- 骨架屏 -->
+    <div id="skeleton-loader" class="skeleton-loader">
+        <div class="skeleton-header"></div>
+        <div class="skeleton-hero"></div>
+        <div class="skeleton-content">
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+        </div>
+    </div>
+
     <!-- 主页面 -->
-    <div id="main-page">
+    <div id="main-page" class="hidden">
         <div class="background-blur"></div>
        
         <header class="liquid-glass">
             <div class="container">
                 <nav class="navbar">
                     <div class="logo">
-                        <i class="fas fa-archive"></i>
-                        <span>档案查询系统</span>
+                        <span id="nav-title">档案查询系统</span>
                     </div>
                     <ul class="nav-links">
                         <li><a href="#download" class="nav-link">下载</a></li>
@@ -35,8 +45,8 @@
         <section class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <h1>档案查询系统</h1>
-                    <p>高效、安全、便捷的档案信息查询解决方案</p>
+                    <h1 id="hero-title">档案查询系统</h1>
+                    <p id="hero-subtitle">高效、安全、便捷的档案信息查询解决方案</p>
                     <a href="#download" class="btn btn-glass">
                         <i class="fas fa-download"></i>
                         立即下载
@@ -50,28 +60,24 @@
             <section id="download" class="section">
                 <div class="section-header">
                     <h2 class="section-title">软件下载</h2>
-                    <p class="section-subtitle">获取最新版本的档案查询系统</p>
                 </div>
                 <div class="download-card liquid-glass">
                     <div class="download-icon">
                         <i class="fas fa-file-archive"></i>
                     </div>
                     <div class="download-details">
-                        <h3>档案查询系统 V2.1.0</h3>
+                        <h3 id="software-version">档案查询系统 V2.1.0</h3>
                         <div class="download-meta">
                             <span><i class="fas fa-hdd"></i> <span id="file-size">45.2 MB</span></span>
                             <span><i class="fas fa-calendar"></i> <span id="update-date">2023-10-15</span></span>
                             <span><i class="fas fa-windows"></i> Windows 10+</span>
                         </div>
-                        <p>档案查询系统是一款专为机构档案管理设计的应用程序，支持快速查询、检索和管理各类档案信息。</p>
+                        <p id="software-description">档案查询系统是一款专为机构档案管理设计的应用程序，支持快速查询、检索和管理各类档案信息。</p>
                         <div class="download-actions">
                             <a href="#" class="btn btn-glass btn-glass-primary" id="download-btn">
                                 <i class="fas fa-download"></i>
                                 下载软件
                             </a>
-                            <div class="download-progress" id="download-progress">
-                                <div class="download-progress-bar" id="download-progress-bar"></div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -80,11 +86,14 @@
             <!-- 公告区域 -->
             <section id="announcements" class="section">
                 <div class="section-header">
-                    <h2 class="section-title">系统公告</h2>
-                    <p class="section-subtitle">最新系统通知和公告</p>
+                    <h2 class="section-title">公告</h2>
+                    <div class="search-box">
+                        <input type="text" id="announcement-search" placeholder="搜索公告..." class="search-input">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
                 </div>
-                <div class="announcements-container">
-                    <div id="announcements-list">
+                <div class="virtual-scroll-container">
+                    <div class="virtual-scroll-content" id="announcements-virtual-content">
                         <!-- 公告内容将通过JavaScript动态加载 -->
                     </div>
                 </div>
@@ -94,10 +103,13 @@
             <section id="changelog" class="section">
                 <div class="section-header">
                     <h2 class="section-title">更新日志</h2>
-                    <p class="section-subtitle">版本历史与功能改进</p>
+                    <div class="search-box">
+                        <input type="text" id="changelog-search" placeholder="搜索更新日志..." class="search-input">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
                 </div>
-                <div class="changelog-container">
-                    <div id="changelog-list">
+                <div class="virtual-scroll-container">
+                    <div class="virtual-scroll-content" id="changelog-virtual-content">
                         <!-- 更新日志内容将通过JavaScript动态加载 -->
                     </div>
                 </div>
@@ -108,10 +120,8 @@
             <div class="container">
                 <div class="footer-content">
                     <div class="footer-logo">
-                        <i class="fas fa-archive"></i>
-                        <span>档案查询系统</span>
+                        <span id="footer-text">© 2026 Rayix 版权所有</span>
                     </div>
-                    <p>© 2026 Rayix 版权所有</p>
                 </div>
             </div>
         </footer>
@@ -150,8 +160,7 @@
             <div class="container">
                 <nav class="navbar">
                     <div class="logo">
-                        <i class="fas fa-archive"></i>
-                        <span>档案查询系统 - 管理后台</span>
+                        <span id="admin-nav-title">档案查询系统 - 管理后台</span>
                     </div>
                     <div class="admin-actions">
                         <button id="back-to-main" class="btn btn-glass">
@@ -161,6 +170,14 @@
                         <button id="logout-btn" class="btn btn-glass">
                             <i class="fas fa-sign-out-alt"></i>
                             退出登录
+                        </button>
+                        <button id="import-data-btn" class="btn btn-glass">
+                            <i class="fas fa-upload"></i>
+                            导入数据文件
+                        </button>
+                        <button id="export-data-btn" class="btn btn-glass btn-glass-primary">
+                            <i class="fas fa-download"></i>
+                            导出数据文件
                         </button>
                     </div>
                 </nav>
@@ -174,11 +191,80 @@
             </div>
 
             <div class="admin-content">
+                <!-- 实时预览区域 -->
+                <div class="admin-section liquid-glass">
+                    <h2 class="section-title">
+                        <i class="fas fa-eye"></i>
+                        实时预览
+                    </h2>
+                    <div class="preview-container">
+                        <div class="preview-tabs">
+                            <button class="preview-tab active" data-tab="announcement">公告预览</button>
+                            <button class="preview-tab" data-tab="changelog">更新日志预览</button>
+                        </div>
+                        <div class="preview-content">
+                            <div id="announcement-preview" class="preview-tab-content active">
+                                <div class="preview-item liquid-glass">
+                                    <div class="preview-header">
+                                        <div class="preview-title" id="preview-announcement-title">公告标题</div>
+                                        <div class="preview-date" id="preview-announcement-date">2023-10-10</div>
+                                    </div>
+                                    <div class="preview-body" id="preview-announcement-content">公告内容将在这里实时预览...</div>
+                                </div>
+                            </div>
+                            <div id="changelog-preview" class="preview-tab-content">
+                                <div class="preview-item liquid-glass">
+                                    <div class="preview-header">
+                                        <div class="preview-title" id="preview-changelog-version">V2.1.0</div>
+                                        <div class="preview-date" id="preview-changelog-date">2023-10-15</div>
+                                    </div>
+                                    <div class="preview-body" id="preview-changelog-content">更新日志内容将在这里实时预览...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-section liquid-glass">
+                    <h2 class="section-title">
+                        <i class="fas fa-cog"></i>
+                        系统设置
+                    </h2>
+                    <div class="form-group">
+                        <label for="page-title-input">页面标题</label>
+                        <input type="text" id="page-title-input" class="form-control" placeholder="页面标题">
+                    </div>
+                    <div class="form-group">
+                        <label for="nav-title-input">导航栏标题</label>
+                        <input type="text" id="nav-title-input" class="form-control" placeholder="导航栏标题">
+                    </div>
+                    <div class="form-group">
+                        <label for="hero-title-input">主标题</label>
+                        <input type="text" id="hero-title-input" class="form-control" placeholder="主标题">
+                    </div>
+                    <div class="form-group">
+                        <label for="hero-subtitle-input">副标题</label>
+                        <input type="text" id="hero-subtitle-input" class="form-control" placeholder="副标题">
+                    </div>
+                    <div class="form-group">
+                        <label for="footer-text-input">页脚文本</label>
+                        <input type="text" id="footer-text-input" class="form-control" placeholder="页脚文本">
+                    </div>
+                    <button id="update-system-config" class="btn btn-glass btn-glass-primary">
+                        <i class="fas fa-save"></i>
+                        保存设置
+                    </button>
+                </div>
+
                 <div class="admin-section liquid-glass">
                     <h2 class="section-title">
                         <i class="fas fa-cog"></i>
                         软件信息设置
                     </h2>
+                    <div class="form-group">
+                        <label for="software-version-input">软件版本</label>
+                        <input type="text" id="software-version-input" class="form-control" placeholder="例如: V2.1.0">
+                    </div>
                     <div class="form-group">
                         <label for="file-size-input">文件大小</label>
                         <input type="text" id="file-size-input" class="form-control" placeholder="例如: 45.2 MB">
@@ -190,6 +276,14 @@
                     <div class="form-group">
                         <label for="download-url-input">下载链接</label>
                         <input type="text" id="download-url-input" class="form-control" placeholder="例如: https://example.com/ArchiveQuerySystem.exe">
+                    </div>
+                    <div class="form-group">
+                        <label for="download-filename-input">下载文件名</label>
+                        <input type="text" id="download-filename-input" class="form-control" placeholder="例如: ArchiveQuerySystem.exe">
+                    </div>
+                    <div class="form-group">
+                        <label for="software-description-input">软件描述</label>
+                        <textarea id="software-description-input" class="form-control" placeholder="输入软件描述"></textarea>
                     </div>
                     <button id="update-software-info" class="btn btn-glass btn-glass-primary">
                         <i class="fas fa-save"></i>
@@ -256,6 +350,8 @@
         </div>
     </div>
 
+    <!-- 加载数据文件 -->
+    <script src="data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
