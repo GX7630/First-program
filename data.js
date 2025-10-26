@@ -40,8 +40,9 @@ let changelog = [
 // 软件信息数据
 let softwareInfo = {
     "version": "V1.1.0",
-    "fileSize": "3KB",
+    "fileSize": "121831726471246716478468746817TB",
     "updateDate": "2025-10-27",
     "downloadUrl": "https://example.com/ArchiveQuerySystem.exe",
-    "description": "档案查询系统是一款专为档案管理设计的应用程序，支持快速查询、检索和管理各类档案信息。"
+    "description": "A rubbish software"
 };
+
